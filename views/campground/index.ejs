@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campgrounds</title>
+</head>
+<body>
+    <h1>All Campground Locations</h1>
+    <a href="/campground/new">Add Campground</a>
+    <div>
+        <ul>
+            <% for(let currground of campgrounds){ %>
+                <li><a href="/campground/<%= currground.id %>"><%= currground.title %></a></li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>

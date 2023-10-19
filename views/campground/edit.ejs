@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campground</title>
+</head>
+<body>
+    <form action="/campground/<%=currground.id%>?_method=PUT" method="post">
+            <label for="title">Title : </label>
+            <input type="text" name="title" id="title" value="<%= currground.title%>">
+            <br>
+
+            <label for="price">Price : </label>
+            <input type="text" name="price" id="price" value="<%= currground.price%>">
+            <br>
+
+            <label for="description"> Description :</label>
+            <input type="text" name="description" id="description" value="<%= currground.description%>">
+            <br>
+
+            <label for="location">Location :</label>
+            <input type="text" name="location" id="location" value="<%= currground.location%>">
+            <br>
+
+            <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

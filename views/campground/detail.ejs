@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+<body>
+    <h1><%= currground.title %></h1>
+    <h3>Price : <%= currground.price %></h3>
+    <h3>Decription : <%= currground.description %> </h3>
+    <h3>Location : <%= currground.location %></h3>
+
+    <a href="/campground/<%= currground.id%>/edit">EDIT CAMPGROUND</a>
+    <br>
+    <a href="/campground">All CAMPGROUND</a>
+
+    <form action="/campground/<%= currground.id%>?_method=DELETE" method="post">
+        <button type="submit">DELETE</button>
+    </form>
+</body>
+</html>
