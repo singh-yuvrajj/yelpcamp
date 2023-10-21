@@ -14,5 +14,9 @@ mongoose.connection.once('open', err => {
     console.log("DB Connection Established");
     });
 
+    const seeds = async ()=>{
+        await Campground.deleteMany({});
+        Campground.insertMany(campgrounds);
+    }
 
-Campground.insertMany(campgrounds);
+    seeds();

@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-</head>
-<body>
-    <h1><%= currground.title %></h1>
-    <h3>Price : <%= currground.price %></h3>
-    <h3>Decription : <%= currground.description %> </h3>
-    <h3>Location : <%= currground.location %></h3>
+<% layout('layouts/boilerPlate') -%>
 
-    <a href="/campground/<%= currground.id%>/edit">EDIT CAMPGROUND</a>
-    <br>
-    <a href="/campground">All CAMPGROUND</a>
-
-    <form action="/campground/<%= currground.id%>?_method=DELETE" method="post">
-        <button type="submit">DELETE</button>
-    </form>
-</body>
-</html>
+    <div class="card text-center p-10">
+        <div class="card-body">
+          <img src="<%= currground.image %>" class="w-50" alt="not found">
+          <h5 class="card-title p-2"><%= currground.title %></h5>
+          <p class="card-text">Description : <%= currground.description %> </p>
+          <p class="card-text"> Price : <%= currground.price %></p>
+          <p class="card-text"> Location : <%= currground.location %></p>
+          <a href="/campground/<%= currground.id%>/edit" class="btn btn-primary m-3">EDIT CAMPGROUND</a>
+          <form action="/campground/<%= currground.id%>?_method=DELETE" method="post">
+            <button type="submit" class="btn btn-secondary">DELETE</button>
+        </form>
+        </div>
+      </div>

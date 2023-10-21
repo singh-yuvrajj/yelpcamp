@@ -2,16 +2,20 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const Campground = require('./model/campground')
+const Campground = require('./model/campground');
+const morgan = require('morgan');
+const ejsMate = require('ejs-mate');
 
 const app = express();
 const port = 3000;
 
+app.engine('ejs',ejsMate);
 
 app.set('views',path.join(__dirname,'/views'));
 app.set('view engine','ejs');
-app.use(methodOverride('_method'));
 
+app.use(methodOverride('_method'));
+app.use(morgan('dev'));
 app.use(express.urlencoded({extended:true}));
 
 
@@ -86,6 +90,11 @@ app.delete('/campground/:id',async (req,res)=>{
     await Campground.findByIdAndDelete(id);
     res.redirect('/campground');
 })
+app.use((req,res)=>{
+    res.status(404).send("Not found");
+})
+
+
 
 app.listen(port,()=>{
     console.log("Server listening");

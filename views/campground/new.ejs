@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW CAMPGROUND</title>
-</head>
-<body>
-    <h1>Add a New Camp Ground </h1>
+<% layout('layouts/boilerPlate') -%>
+    <h1 class="text-center">Add a New Camp Ground </h1>
     <div>
-        <form action="/campground" method="post">
-            <label for="title">Title : </label>
-            <input type="text" name="title" id="title">
-            <br>
+        
+    <form action="/campground" method="post">
+        <div class="mb-3 offset-1">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input type="text" name="title" class="form-control" id="exampleInputEmail1">
+        </div>
+        <div class="mb-3 offset-1">
+          <label for="exampleInputPassword1" class="form-label">Price</label>
+          <div class="input-group">
+            <span class="input-group-text">Rs.</span>
+            <input type="number" class="form-control" id="exampleInputPassword1" name="price" placeholder="0.00">
+          </div>
+          
+        </div>
+        <div class="mb-3 offset-1">
+          <label class="form-label" for="exampleCheck1">Image Url</label>
+          <input type="text" class="form-control" id="exampleCheck1" name="image">
+        </div>
+        <div class="mb-3 offset-1">
+            <label for="exampleInput3" class="form-label">Location</label>
+            <input type="text" class="form-control" id="exampleInput3" name="location">
+          </div>
+          <div class="mb-3 offset-1">
+            <label for="exampleInput4" class="form-label">Description</label>
+            <textarea class="form-control" id="exampleInput4" name="description" rows="3"></textarea>
+          </div>
+        <div class="mb-3 offset-1">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button class="btn btn-secondary"><a href="/campground" class="link-light link-underline link-underline-opacity-0">All CAMPGROUND</a></button>
+            
+        </div>
+      </form>
 
-            <label for="price">Price : </label>
-            <input type="text" name="price" id="price">
-            <br>
-
-            <label for="description"> Description :</label>
-            <input type="text" name="description" id="description">
-            <br>
-
-            <label for="location">Location :</label>
-            <input type="text" name="location" id="location">
-            <br>
-
-            <button type="submit">Submit</button>
-
-        </form>
-
-        <a href="/campground">All CAMPGROUND</a>
+        
     </div>
-</body>
-</html>
