@@ -5,6 +5,11 @@ const methodOverride = require('method-override');
 const Campground = require('./model/campground');
 const morgan = require('morgan');
 const ejsMate = require('ejs-mate');
+const errorCheck = require('./utilities/errorCheck');
+const errorClass = require('./utilities/errorClass');
+const { campgroundSchema } = require('./validator/schema');
+
+const { nextTick } = require('process');
 
 const app = express();
 const port = 3000;
@@ -37,62 +42,68 @@ mongoose.connection.once('open', err => {
 
 
 
-
-
-
 app.get('/',(req,res)=>{
     res.render('home')
 })
 
-app.get('/campground',async (req,res)=>{
+app.get('/campground',errorCheck(async (req,res)=>{
     const campgrounds = await Campground.find({});
     res.render('campground/index',{campgrounds});
-})
+}))
 
-app.post('/campground',async (req,res)=>{
+app.post('/campground',errorCheck(async (req,res,next)=>{
+
+    const { error } = campgroundSchema.validate(req.body);
+    if(error){ 
+        const { message } = error.details[0];
+        throw new errorClass(400,message);
+    }
+
     const newground = new Campground(req.body);
     await newground.save();
     
     res.redirect('/campground');
-})
+}))
 
 
 
-app.get('/campground/new',async (req,res)=>{
+app.get('/campground/new',errorCheck(async (req,res)=>{
     res.render('campground/new');
-})
+}))
 
 
-app.get('/campground/:id',async (req,res)=>{
+app.get('/campground/:id',errorCheck(async (req,res)=>{
     const {id} = req.params;
-    await Campground.findById(id)
-    .then((currground)=>{
-        res.render('campground/detail',{currground});
-    })
-    .catch((err)=>{
-        res.render('error',{err});
-    })
-})
+    const currground = await Campground.findById(id);
+    res.render('campground/detail',{currground});
+}))
 
-app.get('/campground/:id/edit',async (req,res)=>{
+app.get('/campground/:id/edit',errorCheck(async (req,res)=>{
     const {id} = req.params;
     const currground = await Campground.findById(id);
     res.render('campground/edit',{currground});
-})
+}))
 
-app.put('/campground/:id', async (req,res)=>{
+app.put('/campground/:id', errorCheck(async (req,res)=>{
     const {id} = req.params;
     await Campground.findByIdAndUpdate(id,req.body);
     res.redirect(`/campground/${id}`);
-})
-app.delete('/campground/:id',async (req,res)=>{
+}))
+app.delete('/campground/:id',errorCheck(async (req,res)=>{
     const {id} = req.params;
     await Campground.findByIdAndDelete(id);
     res.redirect('/campground');
+}))
+
+app.use((req,res,next)=>{
+    next(new errorClass(400,"Page not found"));
 })
-app.use((req,res)=>{
-    res.status(404).send("Not found");
+
+
+app.use((err,req,res,next)=>{
+    res.status(400).render('error',{err});
 })
+
 
 
 

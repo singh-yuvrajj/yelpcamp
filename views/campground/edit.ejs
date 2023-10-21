@@ -1,28 +1,43 @@
 <% layout('layouts/boilerPlate') -%>
-    <form action="/campground/<%=currground.id%>?_method=PUT" method="post">
+    <form action="/campground/<%=currground.id%>?_method=PUT" method="post" class="needs-validation" novalidate>
         <div class="mb-3 offset-1">
                 <label for="exampleInputEmail1" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="<%= currground.title%>">
+                <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="<%= currground.title%>" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
               </div>
               <div class="mb-3 offset-1">
                 <label for="exampleInputPassword1" class="form-label">Price</label>
                 <div class="input-group">
                   <span class="input-group-text">Rs.</span>
-                  <input type="number" class="form-control" id="exampleInputPassword1" name="price" placeholder="0.00" value="<%=currground.price%>">
+                  <input type="number" class="form-control" id="exampleInputPassword1" name="price" placeholder="0.00" value="<%=currground.price%>" required>
                 </div>
-                
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
               <div class="mb-3 offset-1">
                 <label class="form-label" for="exampleCheck1">Image Url</label>
-                <input type="text" class="form-control" id="exampleCheck1" name="image" value="<%= currground.image%>">
+                <input type="text" class="form-control" id="exampleCheck1" name="image" value="<%= currground.image%>" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
               <div class="mb-3 offset-1">
                   <label for="exampleInput3" class="form-label">Location</label>
-                  <input type="text" class="form-control" id="exampleInput3" name="location" value="<%=currground.location%>">
+                  <input type="text" class="form-control" id="exampleInput3" name="location" value="<%=currground.location%>" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
                 </div>
                 <div class="mb-3 offset-1">
                   <label for="exampleInput4" class="form-label">Description</label>
-                  <textarea class="form-control" id="exampleInput4" name="description" rows="3"><%= currground.description%></textarea>
+                  <textarea class="form-control" id="exampleInput4" name="description" rows="3" required><%= currground.description%></textarea>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
                 </div>
               <div class="mb-3 offset-1">
                   <button type="submit" class="btn btn-info">Update</button>

@@ -2,30 +2,45 @@
     <h1 class="text-center">Add a New Camp Ground </h1>
     <div>
         
-    <form action="/campground" method="post">
+    <form action="/campground" method="post" novalidate class="needs-validation">
         <div class="mb-3 offset-1">
           <label for="exampleInputEmail1" class="form-label">Title</label>
-          <input type="text" name="title" class="form-control" id="exampleInputEmail1">
+          <input type="text" name="title" class="form-control" id="exampleInputEmail1"  required>
+<div class="valid-feedback">
+      Looks good!
+    </div>
         </div>
         <div class="mb-3 offset-1">
           <label for="exampleInputPassword1" class="form-label">Price</label>
           <div class="input-group">
             <span class="input-group-text">Rs.</span>
-            <input type="number" class="form-control" id="exampleInputPassword1" name="price" placeholder="0.00">
+            <input type="number" class="form-control" id="exampleInputPassword1" name="price" placeholder="0.00" required>
+            <div class="valid-feedback">
+      Looks good!
+    </div>
           </div>
           
         </div>
         <div class="mb-3 offset-1">
           <label class="form-label" for="exampleCheck1">Image Url</label>
-          <input type="text" class="form-control" id="exampleCheck1" name="image">
+          <input type="text" class="form-control" id="exampleCheck1" name="image" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
         <div class="mb-3 offset-1">
             <label for="exampleInput3" class="form-label">Location</label>
-            <input type="text" class="form-control" id="exampleInput3" name="location">
+            <input type="text" class="form-control" id="exampleInput3" name="location" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
           <div class="mb-3 offset-1">
             <label for="exampleInput4" class="form-label">Description</label>
-            <textarea class="form-control" id="exampleInput4" name="description" rows="3"></textarea>
+            <textarea class="form-control" id="exampleInput4" name="description" rows="3" required></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
         <div class="mb-3 offset-1">
             <button type="submit" class="btn btn-success">Submit</button>
