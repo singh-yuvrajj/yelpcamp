@@ -29,9 +29,13 @@ for (let i = 0; i < 20; i++) {
     campgrounds.push({
         title: locationNames[locationIndex],
         price: getRandomPrice(1000, 25550),
-        image: "https://source.unsplash.com/collection/484351",
+        images: {
+            path : "https://source.unsplash.com/collection/484351",
+        filename : "temp"
+    },
         description: `Description for ${locationNames[locationIndex]}`,
-        location: getRandomLocation()
+        location: getRandomLocation(),
+        author : '653faf966ec2176babd4ac18'
     });
 }
 

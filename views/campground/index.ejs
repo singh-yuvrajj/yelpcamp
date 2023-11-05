@@ -1,10 +1,11 @@
 <% layout('layouts/boilerPlate') -%>
+
     <h1>All Campground Locations</h1>
     <button class="btn btn-secondary"><a href="/campground/new" class="link-light link-underline link-underline-opacity-0">ADD CAMPGROUND</a></button>
     <div class="d-flex flex-wrap">
             <% for(let currground of campgrounds){ %>
                     <div class="card m-1" style="width: 18rem;">
-                        <img src="<%= currground.image %>"  class="card-img-top" alt="...">
+                        <img src="<%= currground.images[0]?.path %>"  class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title"><%= currground.title%></h5>
                           <p class="card-text"><%= currground.description %></p>

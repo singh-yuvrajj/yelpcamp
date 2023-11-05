@@ -1,5 +1,5 @@
 <% layout('layouts/boilerPlate') -%>
-    <form action="/campground/<%=currground.id%>?_method=PUT" method="post" class="needs-validation" novalidate>
+    <form action="/campground/<%=currground.id%>?_method=PUT" method="post" class="needs-validation" enctype="multipart/form-data"  novalidate>
         <div class="mb-3 offset-1">
                 <label for="exampleInputEmail1" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="<%= currground.title%>" required>
@@ -19,8 +19,19 @@
                 </div>
               </div>
               <div class="mb-3 offset-1">
-                <label class="form-label" for="exampleCheck1">Image Url</label>
-                <input type="text" class="form-control" id="exampleCheck1" name="image" value="<%= currground.image%>" required>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="inputGroupFile02" name = "images" multiple>
+                  <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+                <div>
+                  <% currground.images.forEach((element,i) => { %>
+                    <div class="form">
+                      <img src="<%= element.thumbnail %>" alt="">
+                      <input type="checkbox" name="deleteImages[]" value="<%= element.filename%>" id="image-<%= i %>">
+                    </div>
+                  <% })%>
+                </div>
+               
                 <div class="valid-feedback">
                   Looks good!
                 </div>

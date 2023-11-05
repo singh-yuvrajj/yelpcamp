@@ -1,0 +1,35 @@
+<% layout('layouts/boilerPlate') -%>
+<h1>REGISTER</h1>
+    <form action="/register" method="post" class="needs-validation" novalidate>
+        <div class="mb-3 offset-1">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+            </div>
+
+                <div class="mb-3 offset-1">
+                    <label class="form-label" for="exampleCheck1">UserName</label>
+                    <input type="text" class="form-control" id="exampleCheck1" name="username" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+              <div class="mb-3 offset-1">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+
+                  <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+             
+              <div class="mb-3 offset-1">
+                  <button type="submit" class="btn btn-info">Register</button>
+                  <button class="btn btn-secondary"><a href="/campground" class="link-light link-underline link-underline-opacity-0">All CAMPGROUND</a></button>
+                  
+              </div>
+    </form>

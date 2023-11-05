@@ -2,7 +2,7 @@
     <h1 class="text-center">Add a New Camp Ground </h1>
     <div>
         
-    <form action="/campground" method="post" novalidate class="needs-validation">
+    <form action="/campground" method="post" novalidate enctype="multipart/form-data" class="needs-validation">
         <div class="mb-3 offset-1">
           <label for="exampleInputEmail1" class="form-label">Title</label>
           <input type="text" name="title" class="form-control" id="exampleInputEmail1"  required>
@@ -22,8 +22,10 @@
           
         </div>
         <div class="mb-3 offset-1">
-          <label class="form-label" for="exampleCheck1">Image Url</label>
-          <input type="text" class="form-control" id="exampleCheck1" name="image" required>
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" name = "images" multiple>
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+          </div>
           <div class="valid-feedback">
             Looks good!
           </div>
